@@ -9,7 +9,7 @@
 import UIKit
 
 enum MenuActionSheetAluno {
-    case sms, ligacao
+    case sms, ligacao, waze, mapa
 }
 
 class MenuOpcoesAlunos: NSObject {
@@ -26,6 +26,14 @@ class MenuOpcoesAlunos: NSObject {
             completion(.ligacao)
         })
         menu.addAction(ligacao)
+        let waze = UIAlertAction(title: "Localizar no Waze", style: .default) { (acao) in
+            completion(.waze)
+        }
+        menu.addAction(waze)
+        let mapa = UIAlertAction(title: "Localizar no mapa", style: .default) { (acao) in
+            completion(.mapa)
+        }
+        menu.addAction(mapa)
         let cancelar = UIAlertAction(title: "cancelar", style: .cancel, handler: nil)
         menu.addAction(cancelar)
         return menu

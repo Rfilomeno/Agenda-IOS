@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class Mensagem: NSObject, MFMessageComposeViewControllerDelegate {
+class Mensagem: NSObject, MFMessageComposeViewControllerDelegate, UINavigationControllerDelegate  {
     
     
     // MARK: - metodos
