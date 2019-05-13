@@ -128,4 +128,15 @@ class AlunoViewController: UIViewController, ImagePickerFotoSelecionada {
         }
         
     }
+    
+    
+    @IBAction func buttonCompartilhar(_ sender: UIButton) {
+        guard let nome = textFieldNome.text else { return }
+        guard let nota = textFieldNota.text else { return }
+        guard let imagemDoAluno = imageAluno.image else { return }
+        guard let telefone = textFieldTelefone.text else {return}
+        let activityViewController = UIActivityViewController(activityItems: [nome, telefone, nota, imagemDoAluno], applicationActivities: nil)
+        present(activityViewController, animated: true, completion: nil)
+        
+    }
 }
