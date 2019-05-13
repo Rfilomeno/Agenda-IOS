@@ -64,7 +64,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         if let aluno = aluno{
             Localizacao().converteEnderecoEmCoordenadas(aluno.endereco!,local: { (localizacaoEncontrada) in
                 //let pino = self.configuraPino(titulo: aluno.nome!, localizacao: localizacaoEncontrada)
-                let pino = Localizacao().configuraPino(titulo: aluno.nome!, localizacao: localizacaoEncontrada, cor: <#T##UIColor?#>, icone: <#T##UIImage?#>)
+                let pino = Localizacao().configuraPino(titulo: aluno.nome!, localizacao: localizacaoEncontrada, cor: nil, icone: nil)
                 self.mapa.addAnnotation(pino)
                 self.mapa.showAnnotations(self.mapa.annotations, animated: true)
             })
