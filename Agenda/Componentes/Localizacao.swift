@@ -10,6 +10,21 @@ import UIKit
 import MapKit
 
 class Localizacao: NSObject, MKMapViewDelegate {
+    
+    func localizaAlunoNoWaze(_ alunoSelecionado:Aluno){
+        if UIApplication.shared.canOpenURL(URL(string: "waze://")!){
+            guard let enderecoDoAluno = alunoSelecionado.endereco else {return}
+            Localizacao().converteEnderecoEmCoordenadas(enderecoDoAluno, local: { (localizacaoEncontrada) in
+                let latitude = String(describing: localizacaoEncontrada.location!.coordinate.latitude)
+                let longitude = String(describing: localizacaoEncontrada.location!.coordinate.longitude)
+                let url:String = "waze://?ll=\(latitude),\(longitude)&navigate=yes"
+                UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
+            })
+        }else{
+            print("Não Funciona em simulador ou nao tem waze")
+        }
+
+    }
 
     
     func converteEnderecoEmCoordenadas(_ endereco:String , local:@escaping (_ local:CLPlacemark)->Void){

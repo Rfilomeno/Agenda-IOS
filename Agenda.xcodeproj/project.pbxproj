@@ -16,6 +16,9 @@
 		03AA17681FC843B1003CB2B8 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AA17671FC843B1003CB2B8 /* HomeTableViewCell.swift */; };
 		03AA176D1FC8515A003CB2B8 /* AlunoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AA176C1FC8515A003CB2B8 /* AlunoViewController.swift */; };
 		4FE0264C2BDD3095E8F7092F /* Pods_Agenda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9B83A24A0B59FE2E153DD56 /* Pods_Agenda.framework */; };
+		FD2FAC9622987A6500AF8A34 /* LigacaoTelefonica.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FAC9522987A6500AF8A34 /* LigacaoTelefonica.swift */; };
+		FD2FAC9822987C1E00AF8A34 /* Safari.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FAC9722987C1E00AF8A34 /* Safari.swift */; };
+		FD2FAC9A22987F6C00AF8A34 /* Filtro.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FAC9922987F6C00AF8A34 /* Filtro.swift */; };
 		FD3F29E522831C6400BA167E /* MenuOpcoesAlunos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3F29E422831C6400BA167E /* MenuOpcoesAlunos.swift */; };
 		FD3F29E72283351700BA167E /* Mensagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3F29E62283351700BA167E /* Mensagem.swift */; };
 		FD3F29E9228343FE00BA167E /* Localizacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3F29E8228343FE00BA167E /* Localizacao.swift */; };
@@ -44,6 +47,9 @@
 		6A8C647915DE8E064413D2A8 /* Pods-Agenda.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agenda.debug.xcconfig"; path = "Target Support Files/Pods-Agenda/Pods-Agenda.debug.xcconfig"; sourceTree = "<group>"; };
 		A9B83A24A0B59FE2E153DD56 /* Pods_Agenda.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Agenda.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD78F965A31949479CEF1669 /* Pods-Agenda.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agenda.release.xcconfig"; path = "Target Support Files/Pods-Agenda/Pods-Agenda.release.xcconfig"; sourceTree = "<group>"; };
+		FD2FAC9522987A6500AF8A34 /* LigacaoTelefonica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LigacaoTelefonica.swift; sourceTree = "<group>"; };
+		FD2FAC9722987C1E00AF8A34 /* Safari.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Safari.swift; sourceTree = "<group>"; };
+		FD2FAC9922987F6C00AF8A34 /* Filtro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filtro.swift; sourceTree = "<group>"; };
 		FD3F29E422831C6400BA167E /* MenuOpcoesAlunos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOpcoesAlunos.swift; sourceTree = "<group>"; };
 		FD3F29E62283351700BA167E /* Mensagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mensagem.swift; sourceTree = "<group>"; };
 		FD3F29E8228343FE00BA167E /* Localizacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizacao.swift; sourceTree = "<group>"; };
@@ -207,6 +213,9 @@
 				FD3F29E8228343FE00BA167E /* Localizacao.swift */,
 				FD3F29F122836E8700BA167E /* Notificacoes.swift */,
 				FDA9DD472289C91B0042CA24 /* AutenticacaoLocal.swift */,
+				FD2FAC9522987A6500AF8A34 /* LigacaoTelefonica.swift */,
+				FD2FAC9722987C1E00AF8A34 /* Safari.swift */,
+				FD2FAC9922987F6C00AF8A34 /* Filtro.swift */,
 			);
 			path = Componentes;
 			sourceTree = "<group>";
@@ -353,15 +362,18 @@
 				03AA176D1FC8515A003CB2B8 /* AlunoViewController.swift in Sources */,
 				FDA819B6228C7B8B00C68F65 /* AlunoAPI.swift in Sources */,
 				FDA9DD4B2289D8E40042CA24 /* Pino.swift in Sources */,
+				FD2FAC9A22987F6C00AF8A34 /* Filtro.swift in Sources */,
 				FDA819BA228C87C200C68F65 /* AlunoDAO.swift in Sources */,
 				03AA17661FC84353003CB2B8 /* HomeTableViewController.swift in Sources */,
 				03AA17561FC84154003CB2B8 /* Agenda.xcdatamodeld in Sources */,
 				FD73319E2281E76100D8B5C8 /* ImagePicker.swift in Sources */,
 				FD3F29F0228363E100BA167E /* CalculaMediaAPI.swift in Sources */,
 				03AA17681FC843B1003CB2B8 /* HomeTableViewCell.swift in Sources */,
+				FD2FAC9822987C1E00AF8A34 /* Safari.swift in Sources */,
 				FD3F29E522831C6400BA167E /* MenuOpcoesAlunos.swift in Sources */,
 				FD3F29E72283351700BA167E /* Mensagem.swift in Sources */,
 				FD3F29F222836E8700BA167E /* Notificacoes.swift in Sources */,
+				FD2FAC9622987A6500AF8A34 /* LigacaoTelefonica.swift in Sources */,
 				FDA819B8228C86F400C68F65 /* Repositorio.swift in Sources */,
 				FD3F29ED22834A2D00BA167E /* MapaViewController.swift in Sources */,
 				03AA174E1FC84154003CB2B8 /* AppDelegate.swift in Sources */,

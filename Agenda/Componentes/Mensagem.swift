@@ -11,18 +11,27 @@ import MessageUI
 
 class Mensagem: NSObject, MFMessageComposeViewControllerDelegate, UINavigationControllerDelegate  {
     
+    var delegate:MFMessageComposeViewControllerDelegate?
+    
+    func setaDelegate() ->MFMessageComposeViewControllerDelegate?{
+        delegate = self
+        return delegate
+    }
     
     // MARK: - metodos
     
-    func configuraSms(_ aluno:Aluno) -> MFMessageComposeViewController?{
+    func enviaSms(_ aluno:Aluno, controller:UIViewController) {
         if MFMessageComposeViewController.canSendText(){
             let componenteMensagem = MFMessageComposeViewController()
-            guard let telefone = aluno.telefone else{return componenteMensagem}
+            guard let telefone = aluno.telefone else{return }
             componenteMensagem.recipients = [telefone]
-            componenteMensagem.delegate = self
-            return componenteMensagem
+            guard let delegate = setaDelegate() else {return }
+            componenteMensagem.messageComposeDelegate = delegate
+            //present(componenteMensagem)
+            controller.present(componenteMensagem, animated: true, completion: nil)
+            
         }
-        return nil
+       
         
     }
     
