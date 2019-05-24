@@ -72,6 +72,11 @@ class AlunoDAO: NSObject {
         atualizaContexto()
     }
     
+    func deletaAluno(aluno:Aluno){
+        contexto.delete(aluno)
+        atualizaContexto()
+    }
+    
     func atualizaContexto(){
         do{
             try contexto.save()
