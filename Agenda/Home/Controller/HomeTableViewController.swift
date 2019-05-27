@@ -15,15 +15,21 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate {
 
     var alunos:Array<Aluno> = []
     let searchController = UISearchController(searchResultsController: nil)
-    
-    
     var alunoViewController:AlunoViewController?
+    lazy var pullToRefresh:UIRefreshControl = {
+        let pullToRefresh = UIRefreshControl()
+        pullToRefresh.addTarget(self, action: #selector(recarregaAlunos(_:)), for: UIControlEvents.valueChanged)
+        return pullToRefresh
+    }()
     
     // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configuraSearch()
+        self.tableView.addSubview(pullToRefresh)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(atualizaAlunos), name: NSNotification.Name(rawValue:"atualizaAlunos"),object: nil )
         
     }
     
@@ -39,11 +45,20 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
+    @objc func atualizaAlunos(){
+        recuperaAlunos()
+    }
+    
     func recuperaAlunos(){
         Repositorio().recuperaAluno { (listaDeAlunos) in
             self.alunos = listaDeAlunos
             self.tableView.reloadData()
         }
+    }
+    
+    @objc func recarregaAlunos(_ refreshControl:UIRefreshControl){
+        
+        refreshControl.endRefreshing()
     }
     
     func configuraSearch() {
