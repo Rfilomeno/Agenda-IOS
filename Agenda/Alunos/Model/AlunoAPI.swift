@@ -62,7 +62,7 @@ class AlunoAPI: NSObject {
     
     // MARK: - PUT
     
-    func salvaAlunosNoServidor(parametros:Array<Dictionary<String, String>>){
+    func salvaAlunosNoServidor(parametros:Array<Dictionary<String, Any>>, completion:@escaping(_ salvo:Bool)->Void){
         
         guard let url = URL(string: urlPadrao+"api/aluno/lista") else {return}
         var requisicao = URLRequest(url: url)
@@ -70,21 +70,28 @@ class AlunoAPI: NSObject {
         let json = try! JSONSerialization.data(withJSONObject: parametros, options: [])
         requisicao.httpBody = json
         requisicao.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        Alamofire.request(requisicao)
+        Alamofire.request(requisicao).responseData { (resposta) in
+            if resposta.error == nil {
+                completion(true)
+            }
+        }
     }
 
 
     // MARK: - DELETE
     
-    func deletaAluno(id:String){
+    func deletaAluno(id:String, completion:@escaping(_ apagado:Bool)->Void){
         
         Alamofire.request(urlPadrao+"api/aluno/\(id)", method: .delete).responseJSON { (resposta) in
             switch resposta.result{
+            case .success:
+                completion(true)
+                break
             case .failure:
                 print(resposta.result.error!)
+                completion(false)
                 break
-            default:
-                break
+           
             }
         }
         
@@ -98,7 +105,7 @@ class AlunoAPI: NSObject {
             guard let status = dicionarioDeAlunos["desativado"] as? Bool else {return}
             if status{
                 guard let idDoAluno = dicionarioDeAlunos["id"] as? String else {return}
-                guard let UUIDAluno = UUID(uuidString: StringidDoAluno) else {return}
+                guard let UUIDAluno = UUID(uuidString: idDoAluno) else {return}
                 if let aluno = AlunoDAO().recuperaAlunos().filter({$0.id == UUIDAluno}).first{
                     AlunoDAO().deletaAluno(aluno: aluno)
                 }
