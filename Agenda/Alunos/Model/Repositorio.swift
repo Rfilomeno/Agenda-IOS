@@ -23,6 +23,12 @@ class Repositorio: NSObject {
         
     }
     
+    func recuperaUltimosAlunos(_ versao:String, completion:@escaping ()-> Void){
+        AlunoAPI().recuperaUltimosAlunos(versao) {
+            completion()
+        }
+    }
+    
     func salvaAluno(aluno:Dictionary<String,String>){
         
         AlunoAPI().salvaAlunosNoServidor(parametros: [aluno])
@@ -39,8 +45,9 @@ class Repositorio: NSObject {
         let alunos = AlunoDAO().recuperaAlunos()
         var listaDeParamentros:Array<Dictionary<String, String>> = []
         for aluno in alunos{
+            let id = String(describing: aluno.id)
             let paramentros:Dictionary<String, String> = [
-                "id" : "\(String(describing: aluno.id).lowercased())",
+                "id" : id.lowercased(),
                 "nome" : aluno.nome ?? "",
                 "endereço" : aluno.endereco ?? "",
                 "telefone" : aluno.telefone ?? "",

@@ -34,7 +34,7 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        recuperaAlunos()
+        recuperaTodosAlunos()
     }
     
     // MARK: - Métodos
@@ -46,18 +46,33 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     @objc func atualizaAlunos(){
-        recuperaAlunos()
+        recuperaTodosAlunos()
     }
     
-    func recuperaAlunos(){
+    func recuperaTodosAlunos(){
         Repositorio().recuperaAluno { (listaDeAlunos) in
             self.alunos = listaDeAlunos
             self.tableView.reloadData()
         }
     }
     
-    @objc func recarregaAlunos(_ refreshControl:UIRefreshControl){
+    func recuperaUltimosAlunos(_ versao:String){
         
+        Repositorio().recuperaUltimosAlunos(versao) {
+            self.alunos = AlunoDAO().recuperaAlunos()
+            self.tableView.reloadData()
+            
+        }
+    }
+    
+    @objc func recarregaAlunos(_ refreshControl:UIRefreshControl){
+        let ultimaVersao = AlunoUserDefaults().recuperaUltimaVersao()
+        if ultimaVersao == nil {
+            recuperaTodosAlunos()
+        }else{
+            guard let versao = ultimaVersao else {return}
+            recuperaUltimosAlunos(versao)
+        }
         refreshControl.endRefreshing()
     }
     
